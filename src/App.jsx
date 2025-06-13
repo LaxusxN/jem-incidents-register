@@ -1,16 +1,21 @@
-import './App.css'
-import { db } from './firebaseConfig'
-import {IncidentList} from './IncidentList'
-
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import FormCreateClassroom from "../components/FormCreateClassroom";
+import ShowClassrooms from "../components/ShowClassrooms";
 
 function App() {
-  console.log("Value of db in parent before rendering IncidentList:", db);
   return (
-    <div>
-      <IncidentList db={db} />
-    </div>
-    
+    <Router>
+      <nav>
+        <Link to="/">Crear Aula</Link> | <Link to="/aulas">Ver Aulas</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<FormCreateClassroom />} />
+        <Route path="/aulas" element={<ShowClassrooms />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App
+export default App;
+
